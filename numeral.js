@@ -1131,17 +1131,5 @@
         });
     })();
 
-    (function () {
-        var originalBytesUnformat = numeral.formats.bytes.unformat;
-
-        numeral.formats.bytes.unformat = function (string) {
-            // Check if it's a crypto format first
-            if (string.match(/(-?\d+\.?\d*)\s+(btc|eth|sol|doge)(?:\s|$)/i)) {
-                return null; // Let crypto format handle it
-            }
-            return originalBytesUnformat(string);
-        };
-    })();
-
     return numeral;
 }));
