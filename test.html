@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Testing My Numeral.js Changes</title>
+</head>
+
+<body>
+    <h1>Numeral.js Testing</h1>
+
+    <script src="./numeral.js"></script>
+    <script>
+        // Debug: Check what formats are registered
+        console.log('All registered formats:', Object.keys(numeral.formats));
+
+        // Debug: Test the regex directly
+        var testString = "1 BTC";
+        var cryptoRegex = /(-?\d+\.?\d*)\s?(btc|eth|sol|doge)/i;
+        console.log('Crypto regex test on "1 BTC":', testString.match(cryptoRegex));
+
+        // Debug: Check which format is being matched
+        var formats = numeral.formats;
+        for (var formatName in formats) {
+            var unformatRegex = formats[formatName].regexps.unformat;
+            if (unformatRegex && testString.match(unformatRegex)) {
+                console.log('Format "' + formatName + '" matches "1 BTC" with regex:', unformatRegex);
+            }
+        }
+
+        // Fractions
+        console.log('1.2525 as fraction:', numeral(1.2525).format('/'));
+        console.log('501/400 as decimal:', numeral("501/400").value());
+
+        // Cryptocurrency
+        console.log('$120k as BTC:', numeral(120000).format('btc'));
+        console.log('1 BTC to USD:', numeral("1 BTC").value());
+
+        // Test other crypto formats
+        console.log('Test ETH:', numeral("1 ETH").value());
+        console.log('Test SOL:', numeral("1 SOL").value());
+    </script>
+</body>
+
+</html>
