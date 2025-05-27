@@ -10,34 +10,21 @@
 
     <script src="./numeral.js"></script>
     <script>
-        // Debug: Check what formats are registered
-        console.log('All registered formats:', Object.keys(numeral.formats));
-
-        // Debug: Test the regex directly
-        var testString = "1 BTC";
-        var cryptoRegex = /(-?\d+\.?\d*)\s?(btc|eth|sol|doge)/i;
-        console.log('Crypto regex test on "1 BTC":', testString.match(cryptoRegex));
-
-        // Debug: Check which format is being matched
-        var formats = numeral.formats;
-        for (var formatName in formats) {
-            var unformatRegex = formats[formatName].regexps.unformat;
-            if (unformatRegex && testString.match(unformatRegex)) {
-                console.log('Format "' + formatName + '" matches "1 BTC" with regex:', unformatRegex);
-            }
-        }
+        // example
+        // console.log('3072 in KBs: ', numeral(3072).format('0.000 b'))
+        // console.log('3.072 KB in bytes: ', numeral("3.072 KB").value())
 
         // Fractions
-        console.log('1.2525 as fraction:', numeral(1.2525).format('/'));
-        console.log('501/400 as decimal:', numeral("501/400").value());
+        // console.log('5.25 as fraction:', numeral(5.1).format('/'));
+        // console.log('21/4 as decimal:', numeral("51/10").value());
 
-        // Cryptocurrency
-        console.log('$120k as BTC:', numeral(120000).format('btc'));
-        console.log('1 BTC to USD:', numeral("1 BTC").value());
+        // // Cryptocurrency
+        // console.log('1.1 BTC to USD:', numeral("1.1 BTC").value());
+        // console.log('$120k as BTC:', numeral(120000).format('btc'));
 
-        // Test other crypto formats
-        console.log('Test ETH:', numeral("1 ETH").value());
-        console.log('Test SOL:', numeral("1 SOL").value());
+        // // // Test other crypto formats
+        // console.log('1.28 ETH to USD:', numeral("1.28 ETH").value());
+        // console.log('$3200 USD to ETH:', numeral(3200).format('eth'));
     </script>
 </body>
 
